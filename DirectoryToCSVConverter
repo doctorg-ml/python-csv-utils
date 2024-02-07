@@ -1,0 +1,36 @@
+import os
+import re
+import csv
+from datetime import datetime
+
+
+def extract_queries(file_path):
+    with open(file_path, 'r') as file:
+        content = file.read()
+        queries = re.findall(r'(SELECT|INSERT)\s+(.+?)(?:;|$)', content, re.IGNORECASE | re.DOTALL)
+        return queries
+
+
+def process_directory(directory_path):
+    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+    csv_filename = f"{directory_path}/queries_{timestamp}.csv"
+
+    with open(csv_filename, 'w', newline='', encoding='utf-8') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        csv_writer.writerow(['ID', 'QUERY'])
+
+        for root, dirs, files in os.walk(directory_path):
+            for file_name in files:
+                if file_name.endswith('.sql'):
+                    file_path = os.path.join(root, file_name)
+                    queries = extract_queries(file_path)
+                    if queries:
+                        for query in queries:
+                            csv_writer.writerow([file_name[:-4], f"{query[0].upper()} {query[1].strip()}"])
+
+
+if __name__ == "__main__":
+    ## directory_path = r"C:/Users/"
+    directory_path = r"C:/Users/"
+    process_directory(directory_path)
+    print("CSV file has been created successfully.")
