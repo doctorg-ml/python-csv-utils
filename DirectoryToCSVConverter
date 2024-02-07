@@ -1,3 +1,28 @@
+"""
+Author: Luis Gonzalez, PhD
+Email: lujogre@gmail.com
+Creation Date: [Insert Creation Date]
+
+Query Extractor and CSV Generator
+Description:
+This Python script, authored by Luis Gonzalez, PhD (lujogre@gmail.com), extracts SELECT and INSERT queries from SQL files within a specified directory and generates a CSV file containing the extracted queries.
+
+Functionality:
+- Extracts SELECT and INSERT queries from SQL files using regular expressions.
+- Writes the extracted queries to a CSV file with two columns: ID and QUERY.
+
+Usage:
+1. Ensure Python 3.x is installed on your system.
+2. Update the directory_path variable in the script to point to the directory containing the SQL files you want to process.
+3. Run the script.
+
+Requirements:
+- Python 3.x
+
+Example Usage:
+python query_extractor.py
+"""
+
 import os
 import re
 import csv
