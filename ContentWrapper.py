@@ -1,3 +1,29 @@
+"""
+Author: Luis Gonzalez, PhD
+Email: lujogre@gmail.com
+Creation Date: February 7, 2024
+
+One-Line Content Wrapper
+Description:
+This Python script wraps the content of files within a specified directory into a single line and saves them in a new directory with a timestamp.
+
+Usage:
+Ensure Python 3.x is installed on your system.
+Modify the directory_path variable in the script to point to the directory containing the files you want to process.
+Run the script.
+
+Functionality:
+- Walks through the specified directory, reads each file's content, and combines the lines into one line.
+- Creates a new directory with a timestamp and saves the modified files in this directory.
+
+Requirements:
+- Python 3.x
+- Compatible with all operating systems.
+
+Example Usage:
+python content_wrapper.py
+"""
+
 import os
 from datetime import datetime
 
